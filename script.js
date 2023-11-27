@@ -7,6 +7,29 @@ const interruptor = document.getElementById('interruptor');
 let detenerAudioPresionado = false;
 let intervalId;
 
+function detenerAlarma() {
+    audio.pause();
+    audio.currentTime = 0;
+    detenerAudioPresionado = true;
+    mostrarOcultarBotonDetener(false);
+}
+
+function mostrarOcultarBotonDetener(mostrar) {
+    detenerAlarmaButton.style.display = mostrar ? 'block' : 'none';
+}
+
+function activarDesactivarObtenerEstado() {
+    const estadoInterruptor = interruptor.checked;
+    if (estadoInterruptor) {
+        obtenerEstadoPuerta();
+        intervalId = setInterval(obtenerEstadoPuerta, 1000);
+    } else {
+        clearInterval(intervalId);
+        mostrarOcultarBotonDetener(false);
+        document.getElementById('estadoPuerta').innerText = '';
+    }
+}
+
 function obtenerEstadoPuerta() {
     fetch(apiUrl)
         .then(response => response.json())
@@ -31,29 +54,6 @@ function obtenerEstadoPuerta() {
             console.error('Error al obtener el estado de la puerta:', error);
             document.getElementById('estadoPuerta').innerText = 'Error al obtener el estado';
         });
-}
-
-function detenerAlarma() {
-    audio.pause();
-    audio.currentTime = 0;
-    detenerAudioPresionado = true;
-    mostrarOcultarBotonDetener(false);
-}
-
-function mostrarOcultarBotonDetener(mostrar) {
-    detenerAlarmaButton.style.display = mostrar ? 'block' : 'none';
-}
-
-function activarDesactivarObtenerEstado() {
-    const estadoInterruptor = interruptor.checked;
-    if (estadoInterruptor) {
-        obtenerEstadoPuerta();
-        intervalId = setInterval(obtenerEstadoPuerta, 1000);
-    } else {
-        clearInterval(intervalId);
-        mostrarOcultarBotonDetener(false);
-        document.getElementById('estadoPuerta').innerText = '';
-    }
 }
 
 interruptor.addEventListener('change', activarDesactivarObtenerEstado);

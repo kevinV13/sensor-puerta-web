@@ -15,7 +15,7 @@ function detenerAlarma() {
 }
 
 function mostrarOcultarBotonDetener(mostrar) {
-    detenerAlarmaButton.style.display = mostrar ? 'block' : 'none';
+    detenerAlarmaButton.style.display = mostrar ? 'inline-block' : 'none';
 }
 
 function activarDesactivarObtenerEstado() {
@@ -48,6 +48,8 @@ function obtenerEstadoPuerta() {
             } else {
                 mostrarOcultarBotonDetener(false); 
                 detenerAudioPresionado = false;
+                audio.pause();
+                audio.currentTime = 0;
             }
         })
         .catch(error => {

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .section {
+            text-align: center;
+            width: 45%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        
+    </style>
+</head>
+    <body>
+        <div class="section">
+            <h1>SEGURIDAD</h1>
+            <div>
+                <label for="interruptor" style="display: inline-block;">Seguridad Puerta</label>
+                <input type="checkbox" id="interruptor" checked style="display: inline-block;">
+            </div>
+            <p id="estadoPuerta"></p>
+            <audio id="audio" src="C:/Users/JENNY/Desktop/hoy/audio/a.mp3" loop></audio>
+            <button id="detenerAlarma" style="display: none;">Detener Alarma</button>
+            <script src="script.js"></script>
+        </div>    
+
+        <div class="section">
+            <h1>CONTROL HOGAR</h1>
+            <button id="toggleBtn">Encender LED</button>
+            <script src="script2.js"></script>
+        </div>
+    </body>
+</html>

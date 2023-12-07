@@ -1,13 +1,36 @@
-let estadoLed = 0; // Inicialmente apagado
+// Lista de URLs de LEDs
+const ledUrls = [
+    'https://industrial.api.ubidots.com/api/v1.6/devices/esp32-iot-puerta/led1/values/',
+    'https://industrial.api.ubidots.com/api/v1.6/devices/esp32-iot-puerta/led2/values/',
+    'https://industrial.api.ubidots.com/api/v1.6/devices/esp32-iot-puerta/led3/values/',
+    'https://industrial.api.ubidots.com/api/v1.6/devices/esp32-iot-puerta/led4/values/',
+    'https://industrial.api.ubidots.com/api/v1.6/devices/esp32-iot-puerta/led5/values/',
+    'https://industrial.api.ubidots.com/api/v1.6/devices/esp32-iot-puerta/led6/values/',
+    'https://industrial.api.ubidots.com/api/v1.6/devices/esp32-iot-puerta/led7/values/',
+    'https://industrial.api.ubidots.com/api/v1.6/devices/esp32-iot-puerta/led8/values/',
+    // Agrega más URLs según sea necesario
+];
 
-document.getElementById('toggleBtn').addEventListener('click', function () {
-    estadoLed = 1 - estadoLed; // Alternar entre 0 y 1
-    actualizarTextoBoton();
-    enviarDato(estadoLed);
-});
+// Estado inicial de los LEDs
+let estadosLed = Array(ledUrls.length).fill(0); // Inicialmente todos apagados
 
-function enviarDato(valor) {
-    const apiUrl = 'https://industrial.api.ubidots.com/api/v1.6/devices/esp32-iot-puerta/led/values/';
+// Configurar eventos para cada botón
+for (let i = 0; i < ledUrls.length; i++) {
+    const buttonId = `toggleBtn${i + 1}`;
+    const button = document.getElementById(buttonId);
+
+    button.addEventListener('click', function () {
+        // Alternar el estado del LED asociado al botón
+        estadosLed[i] = 1 - estadosLed[i];
+        actualizarTextoBoton(button, estadosLed[i]);
+        enviarDato(ledUrls[i], estadosLed[i]);
+    });
+
+    // Inicializar texto del botón
+    actualizarTextoBoton(button, estadosLed[i]);
+}
+
+function enviarDato(apiUrl, valor) {
     const token = 'BBUS-s9v0GaUQ94fObiXsMJRFVezGc8BFN7';  // Reemplaza con tu token de Ubidots
 
     // Datos que deseas enviar
@@ -36,7 +59,6 @@ function enviarDato(valor) {
         });
 }
 
-function actualizarTextoBoton() {
-    const boton = document.getElementById('toggleBtn');
-    boton.textContent = estadoLed === 1 ? 'Apagar LED' : 'Encender LED';
+function actualizarTextoBoton(boton, estado) {
+    boton.textContent = estado === 1 ? 'Apagar' : 'Encender';
 }

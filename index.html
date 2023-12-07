@@ -25,6 +25,17 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             
         }
+        .led-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .led-button {
+            padding: 10px;
+            font-size: 14px;
+        }
 
         h1 {
             color: #333;
@@ -56,21 +67,39 @@
 </head>
     <body>
         <div class="section">
+
             <h1>SEGURIDAD</h1>
+
             <div>
-                <label for="interruptor" style="display: inline-block;">Seguridad Puerta</label>
-                <input type="checkbox" id="interruptor" checked style="display: inline-block;">
+                <p id="estadoPuerta1"></p>
+                <p id="estadoPuerta2"></p>
             </div>
-            <p id="estadoPuerta"></p>
-            <audio id="audio" src="./audio/a.mp3" loop></audio>
-            <button id="detenerAlarma" style="display: none;">Detener Alarma</button>
-            <script src="script.js"></script>
+
+            <div>
+                <button id="detenerAlarmaBtn">Detener Alarma</button>
+            </div>
+        
+                <script src="script.js"></script>
         </div>    
 
         <div class="section">
             <h1>CONTROL HOGAR</h1>
-            <button id="toggleBtn">Encender LED</button>
+            <div class="led-buttons">
+                <button class="led-button" id="toggleBtn1">Encender LED 1</button>
+                <button class="led-button" id="toggleBtn2">Encender LED 2</button>
+                <button class="led-button" id="toggleBtn3">Encender LED 3</button>
+                <button class="led-button" id="toggleBtn4">Encender LED 4</button>
+                <button class="led-button" id="toggleBtn5">Encender LED 5</button>
+                <button class="led-button" id="toggleBtn6">Encender LED 6</button>
+                <button class="led-button" id="toggleBtn7">Encender LED 7</button>
+                <button class="led-button" id="toggleBtn8">Encender LED 8</button>
+            </div>
             <script src="script2.js"></script>
         </div>
+
+
+
+
+
     </body>
 </html>

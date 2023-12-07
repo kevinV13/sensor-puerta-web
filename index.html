@@ -67,21 +67,37 @@
 </head>
     <body>
         <div class="section">
-
             <h1>SEGURIDAD</h1>
-
             <div>
-                <p id="estadoPuerta1"></p>
-                <p id="estadoPuerta2"></p>
+                <label for="interruptor" style="display: inline-block;">Seguridad Puerta</label>
+                <input type="checkbox" id="interruptor" checked style="display: inline-block;">
             </div>
+            <p id="Puerta1"></p>
+            <p id="Puerta2"></p>
 
-            <div>
-                <button id="detenerAlarmaBtn">Detener Alarma</button>
+            <button id="detenerAlarma">Detener Alarma</button>
+
+            <script src="script.js"></script>
+        </div>
+
+        <div class="section">
+            
+            <div id="eventosContainer"></div>
+            <div id="eventosContainer" style="margin-top: 10px; border: 1px solid #ccc; padding: 10px;">
+                <ul>
+                    <!-- Datos locales para la lista -->
+                    <li><strong>Sensor 1</strong> - 2023-12-07 17:00:00</li>
+                    <li><strong>Sensor 2</strong> - 2023-12-07 17:15:01</li>
+                    <li><strong>Sensor 1</strong> - 2023-12-07 17:25:07</li>
+                    <li><strong>Sensor 1</strong> - 2023-12-07 17:35:10</li>
+                    <li><strong>Sensor 2</strong> - 2023-12-07 17:35:41</li>
+                    <li><strong>Sensor 2</strong> - 2023-12-07 17:35:55</li>
+                    <!-- Agrega más eventos según sea necesario -->
+                </ul>
             </div>
-        
-                <script src="script.js"></script>
-        </div>    
-
+            <script src="script.js"></script>
+        </div>
+            
         <div class="section">
             <h1>CONTROL HOGAR</h1>
             <div class="led-buttons">
@@ -96,10 +112,7 @@
             </div>
             <script src="script2.js"></script>
         </div>
-
-
-
-
+        
 
     </body>
 </html>
